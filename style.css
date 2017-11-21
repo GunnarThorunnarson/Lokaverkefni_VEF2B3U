@@ -1,0 +1,16 @@
+body {
+	margin: 0 auto;
+	max-width: 500px;
+	margin-top: 50px;
+}
+
+h1 {
+	color: #e74c3c;
+	font-family: "Arial Black", Gadget, sans-serif;
+	text-align: center;
+}
+canvas {
+	background: #eee; 
+	display: block;
+	border-bottom: 5px solid #e74c3c;
+}
