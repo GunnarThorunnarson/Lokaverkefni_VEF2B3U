@@ -2,15 +2,27 @@ body {
 	margin: 0 auto;
 	max-width: 500px;
 	margin-top: 50px;
+	font-family: "Arial Black", Gadget, sans-serif;
+	text-align: center;
 }
 
 h1 {
 	color: #e74c3c;
-	font-family: "Arial Black", Gadget, sans-serif;
 	text-align: center;
 }
+
+h3 {
+	color: #e74c3c;
+	text-align: right;
+}
+
 canvas {
 	background: #eee; 
 	display: block;
 	border-bottom: 5px solid #e74c3c;
+	cursor: none;
+}
+
+img {
+	height: 30px;
 }
