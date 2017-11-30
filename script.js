@@ -16,6 +16,9 @@ var bounce = new Audio('Sound/bounce.mp3');
 var voiceGameOver = new Audio('Sound/GameOver.mp3');
 var modal = document.getElementById('myModal');
 var gameOver = false;
+var powerX = 20;
+var powerY = 0;
+var power = true;
 
 //Fylki sem inniheldur liti
 var colors = ["#3498db", "#9b59b6", "#f1c40f", "#e67e22", "#2ecc71", "#f39c12", "#1abc9c",];
@@ -49,7 +52,7 @@ function mouseMoveHandler(e) {
     }
 }
 
-//skilgreint hljóðstyrkur
+//skilgreint hljóðstyrk
 bounce.volume = 0.1;
 voiceGameOver.volume = 0.1;
 
@@ -130,6 +133,14 @@ var ball3 = Ball.create(-3, -3);
 var ball4 = Ball.create(4, 2);
 var ball5 = Ball.create(2, 2);
 
+function drawPowerUp() {
+	ctx.beginPath();
+	ctx.rect(powerX, powerY, 20, 20);
+	ctx.fillStyle = "#FF00CC";
+	ctx.fill();
+	ctx.closePath();
+}
+
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
@@ -143,6 +154,13 @@ function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	    ball1.drawBall();
 	    ball2.drawBall();
+	    if (totalScore % 30 === 0) {
+	    	power = true;
+	    }
+	    if (power === true) {
+	    	drawPowerUp();
+	    	powerY += 2;
+		}
 	    if (totalScore >= 30) {
 	    	ball3.drawBall();
 	    }
@@ -160,6 +178,14 @@ function draw() {
 	}
 	else if(leftPressed && paddleX > 0) {
 	    paddleX -= 15;
+	}
+
+	if(powerY > canvas.height + 20) {
+		if(powerX > paddleX - 10 && powerX < paddleX + paddleWidth + 10) {
+        	paddleWidth = 130;
+        	power = false;
+        	powerY = 0;
+    	}
 	}
 }
 
